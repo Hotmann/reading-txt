@@ -3,21 +3,29 @@
 # count_words("The cake is done. It is a big cake!") 
 # --> {"cake":2, "big":1, "is":2, "the":1, "a":1, "it":1}
 
+
 def read_file_content(filename):
     # [assignment] Add your code here 
-    content = filename.read()
-    
-    return content
+    opened = open(filename, "r")
+    contents = opened.read()
+    return contents
 
 
 
 def count_words():
     text = read_file_content("./story.txt")
     # [assignment] Add your code here
-    dict = {}
+    words =text.split()
+    
+    counts = dict()
 
-    occurrences = text.count("python")
-    return dict
+    for word in words:
+        if word in counts:
+            counts[word] += 1
+        else:
+            counts[word] = 1
+
+    return counts
     
 
 result = count_words()
